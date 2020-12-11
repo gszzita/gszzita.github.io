@@ -2,35 +2,32 @@
     padding: 0;
     margin:0;
     font-family: Arial, Tahoma, Helvetica, FreeSans, sans-serif;
-    cursor: default;
+    box-sizing: border-box;
 }
 html{
     height:100%; 
     max-height:100%;  
     font-size: 14px;
-    font-family: trebuchet ms, tahoma, verdana, arial, sans-serif; 
-    background:#04BCBC; 
+    margin: auto;
+    background: linear-gradient(180deg, #020024 0%, #00BCBC 74%, #59E6E6 100%);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center; 
 }
-body {
-    height:100%; 
-    max-height:100%; 
+body { 
     overflow:auto;
 }
 header{
     width: 100%;
-    top: 0;
-    left: 0;
-    vertical-align: middle;
+    text-align: center;
+    overflow: auto;
 }
 #logo{
     min-width: 70px;
     width: 50%;
 }
 #logo img{
-    display: block;
-    height: auto;
     max-width: 300px;
-    padding: 0 25% 0 25%;
     text-align: center;
 }
 header {
@@ -38,25 +35,25 @@ header {
 	font-size: 80%;
 }
 .full {
-    background-color: #04BCBC;
-    padding: 5px;
     color: #000000;
     overflow: auto;
 }
 nav {
-	background-color: #59e6e6;
+    background-color: #59e6e6;
     text-align: center;
-    padding: 15px;
-	color: #000000;
+    padding: 10px;
+    color: #000000;
     text-align: center;
     border-top: 1px #ffffff solid;
+    font-size: 16px;
+    line-height: 30px;
 }
 nav a {
     color: #000000;
     padding: 5px 15px;
 }
 nav a:hover {
-	color: #ffffff;
+    color: #ffffff;
     text-decoration: none;
     border-top: 1px #ffffff solid;
     border-bottom:  1px #ffffff solid;
@@ -69,8 +66,8 @@ ul li {
     list-style: none;
 }
 footer {
-	background-color: #000000;
-	color: #59e6e6;
+    background-color: #000000;
+    color: #59e6e6;
     text-align: center;
     border-top: 1px #ffffff solid;
     padding: 5px;
@@ -82,20 +79,33 @@ a{
 a:hover{
     font-style: italic;
 }
-
 h1 {
     color: #04BCBC;
     text-align: center;
-    padding: 15px;
+    padding: 25px 0 15px 0;
+    font-size: 40px;
 }
 h2 {
     text-align: left;
     padding: 15px;
-
+    color: #FF9F41;
+    font-size: 24px;
 }
 p{
     text-align: left;
-    padding: 5px;
+    padding: 5px 5px 10px 5px;
+}
+img{
+    text-align: center;
+}
+b{ 
+    color: #59E6E6;
+}
+i{
+    color: #04BCBC;
+}
+u{
+    color: #FF9F41;
 }
 
 /*főoldal*/ 
@@ -106,54 +116,41 @@ p{
 }
 .box-one{
     background-color: #051c83e8;
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto;
-    box-sizing: border-box;
+    padding: 5px;
     text-align: left;
 }
 .box-two{
     background-color: #000000;
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto;
-    box-sizing: border-box;
+    padding: 15px;
+    text-align: right;
 }
 .box-two img {
-    position: relative;
     float: left;
-    margin: 5px;
-    min-height: 1px;
-    padding-right: 15px;
-    padding-left: 15px;
+    margin: 5px 10px 5px 5px;
+    min-height: 15px;
     width: 100%;
-    max-width: 300px;
-    box-sizing: border-box;
-    display: block;
+    max-width: 250px;
+    display: inline-block;
     border-radius: 25%;
 }
 .box-one img {
-    position: relative;
     float: right;
-    margin: 5px;
-    min-height: 1px;
-    padding-right: 15px;
-    padding-left: 15px;
+    margin: 5px 5px 5px 10px;
+    min-height: 15px;
     width: 100%;
-    max-width: 300px;
-    box-sizing: border-box;
-    display: block;
+    max-width: 250px;
+    display: inline-block;
     border-radius: 25%;
 }
 .box-one h2, .box-two h2{
     text-align: center;
     font-style: none;
-    padding-top: 15px;
+    padding-top: 5px;
     padding-bottom: 5px;
 }
-
+.box-one h2 a, .box-two h2 a{
+    color: #FF9F41;
+}
 .box-two h2 a:hover{
     border-left: 2px #ffffff solid;
     padding-left: 5px;
@@ -165,82 +162,150 @@ p{
     font-style:normal;
 }
 
+/*aktuális odlal*/
+.menu-container{
+    overflow: auto;
+    height: 100%;
+    width: 100%;
+}
+label{
+    position: fixed;
+    top: -25px;
+    left: -35px;
+    width: 20px;
+    display: block;
+    margin: 40px;
+    color: #ffffff;
+    transition: transform 1s cubic-bezier(0.75, 0, 0.25, 1);
+}
+label::before{
+    position: absolute;
+    transition: opacity .3s cubic-bezier(0.75, 0, 0.25, 1);
+}
+label span::before, label span::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background-color: #ffffff;
+    box-shadow: 2px 2px #04BCBC;
+    cursor: pointer;
+}
+#openmenu:checked ~ .menu-pane {
+    transform: translateX(-5px);
+}
+.menu-pane {
+    position: absolute;
+    transform: translateX(-105vw);
+    transform-origin: (0, 0);
+    left:0;
+    height: 100%;
+    width: 100%;
+}
+.menu-pane p {
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: bold;
+}
+.menu-pane nav{
+    background: linear-gradient(180deg, #020024 0%, #00BCBC 74%, #59E6E6 100%);
+}
+.menu-pane ul {
+    display: inline-block;
+    padding: 15px;
+}
+.menu-pane li {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-left: 10px;
+    font-size: 16px;
+}
+.menu-links li a {
+    color: #ffffff;
+}
+.menu-links li:hover a {
+    color: #FF9F41;  
+    border: none;
+}
+
+
 @media screen and (min-width: 600px) {
     .box-one p, .box-two p, main div p{
         text-align: justify;
     }
     .box-one h2{
         text-align: right;
+        padding-top: 25px;
     }
     .box-two h2{
-        text-align: left; 
+        text-align: left;
+        padding-top: 25px 
     }
-}
-
-
-/*aktuális odlal*/
-.sidenav{
-    width: 200px;
-    min-width: 100px;
-    height: 100%;
-    background-color: #59e6e6;
-    margin-left: 5px;
-    font-family: Arial, Helvetica, sans-serif;
-    display: block;
-    left:0;
-    position: fixed;
-    overflow: auto;
-}
-.sidenav a, .sidenav label span{
-    font-family: Arial;
-    color: #000000;
-	font-variant: small-caps;
-    text-align: left;
-    text-decoration: none;
-    padding-left: 6px;
-    display:block;
-    padding: 15px;
-    font-style: normal;
-}
-.sidenav a:hover, #active{
-    color: #59e6e6;
-    background-color: #000000;
-    text-align: right;
-    padding-right: 6px;
-    padding-left: 0px;
-    font-style: normal;
-}
-.sidenav label span:hover{
-    color: #000000;
-    background-color: #ffffff;
-    text-align: right;
-    padding-right: 6px;
-    padding-left: 0px;
-}
-.dropdown {
-  clear:both;
-  width:100%;
-  height:0px;
-  overflow: hidden;
-  text-align: center;
-  transition: height .4s ease;
-}
-#touch {
-    position: absolute; 
-    opacity: 0; 
-    height: 0px;
-}    
-#touch:checked+ .dropdown {height: 300px;}
-
-.left{
-    position:fixed; 
-    left:0; 
-    top:10%; 
-    height:100%; 
-    max-width:200px; 
-    font-size: 14px; 
-    z-index:4;
-}
-.content{
-    padding:5px;
+    .box-one img {
+        float: right;
+    }
+    .box-two img {
+        float: left;
+    }
+    html{
+        padding-left: 15%;
+    }
+    .menu-container{
+        overflow: auto;
+        height: 100%;
+        width: 100%;
+    }
+    label{
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        width: 0px;
+        display: block;
+        margin: 10%;
+        color: #ffffff;
+        transition: none;
+    }
+    label::before{
+        transition: none;
+    }
+    label span::before, label span::after{
+        background-color: #ffffff00;
+        box-shadow: none;
+        cursor: default;
+    }
+    #openmenu:checked ~ .menu-pane {
+        transform: none;
+    }
+    .menu-pane {
+        transform: none;
+        left:0;
+        width: 20%;
+        margin-left: -3%;
+    }
+    .menu-pane nav{
+        background: #00000000;
+        border:none;
+        position: fixed;
+        padding-left: 5%;
+    }
+    .menu-pane ul li{
+        transition: all .3s;
+        display: block;
+    }
+    .menu-pane ul {
+        padding: 0px;
+    }
+    .menu-pane li {
+        padding-top: 4%;
+        padding-bottom: 3%;
+        margin-left: 2%;
+        font-size: 16px;
+    }
+    #openmenu{
+        transition: all .3s;
+    }
+    #openmenu + li {
+        max-height: 200px;
+    }
 }
